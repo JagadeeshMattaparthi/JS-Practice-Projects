@@ -2,7 +2,8 @@ const questionEl= document.getElementById("question");
 const questionFormEl=document.getElementById("questionForm");
 const scoreEl=document.getElementById("score");
 let storedAnswer;
-let score=localStorage.getItem("score");
+//let score=localStorage.getItem("score");
+let score=0;
 const randomNumber=(min,max)=>{
     return Math.floor(Math.random()*(max-min+1)+min);
 };
@@ -39,10 +40,10 @@ const generateQuestion=()=>{
             question=`Q. what is ${secondNum} subtract from ${firstNum}?`;
             answer=firstNum-secondNum;
             break;
-        case 4:
-            question=`Q. what is ${firstNum} divide by ${secondNum}?`;
-            answer=firstNum/secondNum;
-            break;
+        // case 4:
+        //     question=`Q. what is ${firstNum} divide by ${secondNum}?`;
+        //     answer=firstNum/secondNum;
+        //     break;
         default:
             question=`Q. what is ${firstNum} multiply by ${secondNum}?`;
             answer=firstNum*secondNum;
@@ -84,7 +85,7 @@ const checkAnswer=(event)=>{
             },
           }).showToast();
     }
-    scoreEl.innerText=+score;
+    scoreEl.innerText=score;
     localStorage.setItem("score",score);
     event.target.reset();
     showQuestion();
